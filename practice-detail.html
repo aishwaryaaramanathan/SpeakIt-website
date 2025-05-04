@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Detail - SpeakIt</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(to bottom, rgba(16, 23, 42, 0.95), rgba(10, 15, 30, 0.98)), url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        .practice-detail {
+            padding: 4rem 0;
+        }
+        
+        .word-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .video-box {
+            background-color: rgba(226, 232, 255, 0.9);
+            border-radius: 1rem;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .video-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(30, 58, 138, 0.8);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .feedback-container {
+            background-color: rgba(226, 232, 255, 0.9);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .control-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+        
+        .btn {
+            font-size: 1.2rem;
+            padding: 1rem 1.5rem;
+        }
+        
+        .recording-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(220, 53, 69, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 10;
+        }
+        
+        .recording-indicator span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #ff3b30;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .feedback-result {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .feedback-result i {
+            font-size: 2rem;
+            color: #38a169;
+            margin-bottom: 0.5rem;
+        }
+        
+        .accuracy-meter {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .accuracy-label {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .accuracy-bar {
+            height: 10px;
+            background-color: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .accuracy-fill {
+            height: 100%;
+            background-color: #4169e1;
+            border-radius: 5px;
+            transition: width 1s ease;
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="full logo.png" alt="SpeakIt Logo">
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">HOME</a>
+                <a href="practice.html" class="active">PRACTICE</a>
+                <a href="about.html">ABOUT</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">CONTACT</a>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Practice Detail Section -->
+    <section class="practice-detail">
+        <div class="container">
+            <h1 id="wordTitle" class="word-title">Loading...</h1>
+            
+            <div class="video-container">
+                <div class="video-box">
+                    <div class="video-label">Reference</div>
+                    <video id="referenceVideo" controls>
+                        <!-- Video source will be set dynamically -->
+                        <source src="/placeholder.svg" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-box">
+                    <div class="video-label">Your Recording</div>
+                    <video id="userVideo" muted></video>
+                </div>
+            </div>
+            
+            <div id="feedbackContainer" class="feedback-container hidden">
+                <div id="feedbackText">
+                    <!-- Feedback will be displayed here -->
+                </div>
+            </div>
+            
+            <div class="control-buttons">
+                <button id="startRecording" class="btn btn-primary">Start Recording</button>
+                <button id="stopRecording" class="btn btn-dark" disabled>Stop Recording</button>
+            </div>
+            
+            <div class="mt-4 text-center">
+                <a href="practice.html" class="btn btn-link">
+                    <i class="fas fa-arrow-left"></i> Back to Words
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="wave-container">
+            <div class="wave wave1"></div>
+            <div class="wave wave2"></div>
+            <div class="wave wave3"></div>
+            <div class="wave wave4"></div>
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h2>SpeakIt</h2>
+                    <p>Learn to pronounce words by watching clear, visual examples and getting feedback.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h3>Landings</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h3>Socials</h3>
+                        <ul>
+                            <li><a href="https://linkedin.com" target="_blank">Linkedin</a></li>
+                            <li><a href="https://github.com" target="_blank">Github</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 All Rights Reserved</p>
+                <div class="social-icons">
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <button id="scrollToTop" aria-label="Scroll to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script src="practice-detail.js"></script>
+</body>
+</html>

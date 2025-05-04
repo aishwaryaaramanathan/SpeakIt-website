@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - SpeakIt</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="full logo.png" alt="SpeakIt Logo">
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">HOME</a>
+                <a href="about.html">ABOUT</a>
+                <a href="faq.html" class="active">FAQ</a>
+                <a href="contact.html">CONTACT</a>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-container">
+                <div class="faq-intro">
+                    <h1>FAQ</h1>
+                    <p class="subtitle">Do you have any questions for us?</p>
+                    <p>If there are question you want to ask. We will answer all your question</p>
+
+                    <form id="emailForm" class="email-form">
+                        <input type="email" id="emailInput" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-dark">Submit</button>
+                    </form>
+                </div>
+
+                <div class="faq-content">
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span class="accordion-number">01</span>
+                                <h3>Is it available for languages other than English?</h3>
+                                <span class="accordion-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="accordion-body">
+                                <p>Not yet, we are working on it to bring it you soon.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span class="accordion-number">02</span>
+                                <h3>Do we need any external hardware?</h3>
+                                <span class="accordion-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="accordion-body">
+                                <p>A simple headphone would suffice. If in case you don't have one don't sweat it. Make sure to have a quietest environment.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span class="accordion-number">03</span>
+                                <h3>How accurate is the feedback?</h3>
+                                <span class="accordion-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="accordion-body">
+                                <p>Our system provides feedback with approximately 85-90% accuracy. The accuracy improves over time as our AI learns from more users and continues to be trained with diverse speech patterns.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span class="accordion-number">04</span>
+                                <h3>Can adults use SpeakIt too?</h3>
+                                <span class="accordion-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="accordion-body">
+                                <p>While SpeakIt was initially designed with children in mind, it's equally effective for adults who are learning to speak or improving their pronunciation.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span class="accordion-number">05</span>
+                                <h3>Is there a mobile app available?</h3>
+                                <span class="accordion-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="accordion-body">
+                                <p>Currently, SpeakIt is a browser-based tool that works on any device with a modern web browser. We're working on dedicated mobile apps that will be available in the future.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="wave-container">
+            <div class="wave wave1"></div>
+            <div class="wave wave2"></div>
+            <div class="wave wave3"></div>
+            <div class="wave wave4"></div>
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h2>SpeakIt</h2>
+                    <p>SpeakIt - Together, we're heard ♡</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h3>Landings</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h3>Socials</h3>
+                        <ul>
+                            <li><a href="https://linkedin.com" target="_blank">Linkedin</a></li>
+                            <li><a href="https://github.com" target="_blank">Github</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 All Rights Reserved</p>
+                <div class="social-icons">
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <button id="scrollToTop" aria-label="Scroll to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script src="faq.js"></script>
+</body>
+</html>
